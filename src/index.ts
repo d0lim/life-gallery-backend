@@ -8,6 +8,7 @@ import db from "./decorators/db";
 import { config } from "dotenv";
 import userRouter from "./routers/user";
 import { readFileSync } from "fs";
+import fastifyCors from "fastify-cors";
 
 config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -24,6 +25,7 @@ const server: ServerType = fastify({
 });
 
 server.register(db);
+server.register(fastifyCors, { origin: "*" });
 server.register(registerRouter);
 server.register(imageRouter);
 server.register(fallbackRouter);
