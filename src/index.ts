@@ -7,11 +7,21 @@ import fallbackRouter from "./routers/fallback";
 import db from "./decorators/db";
 import { config } from "dotenv";
 import userRouter from "./routers/user";
+import { readFileSync } from "fs";
 
 config({ path: `.env.${process.env.NODE_ENV}` });
 
+const certFilePath = `/etc/letsencrypt/live/api.life-gallery.art`;
+
 const PORT = process.env.PORT || "3000";
 const server: ServerType = fastify({
+  https:
+    process.env.NODE_ENV === "production"
+      ? {
+          key: readFileSync(`${certFilePath}/privkey.pem`),
+          cert: readFileSync(`${certFilePath}/fullchain.pem`)
+        }
+      : {},
   logger: {
     level: "info",
     file: "./server.log",
