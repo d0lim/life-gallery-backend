@@ -89,6 +89,11 @@ const fallbackRouter = fp(async (server: ServerType, opts: FastifyPluginOptions)
                   {
                     label: "작품 확인하러 가기",
                     action: "webLink",
+                    webLinkUrl: `https://life-gallery.art/${user.id}/posts/${recentPost.id}`
+                  },
+                  {
+                    label: "내 갤러리 보러 가기",
+                    action: "webLink",
                     webLinkUrl: `https://life-gallery.art/${user.id}`
                   },
                   {
