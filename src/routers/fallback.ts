@@ -89,7 +89,7 @@ const fallbackRouter = fp(async (server: ServerType, opts: FastifyPluginOptions)
                   {
                     label: "쟉품 확인하러 가기",
                     action: "webLink",
-                    webLinkUrl: `https://life-gallery.netlify.app/${user.id}`
+                    webLinkUrl: `https://life-gallery.art/${user.id}`
                   }
                 ]
               }
