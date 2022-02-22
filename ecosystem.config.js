@@ -2,7 +2,7 @@ module.exports = {
   name: "api",
   cwd: "./",
   script: "./dist/index.js",
-  instances: 2,
+  instances: 1,
   exec_mode: "cluster",
   autorestart: true,
   env: {
